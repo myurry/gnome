@@ -12,12 +12,12 @@ size = Vector2(16, 16)
 size = Vector2(424, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
-size = Vector2(238, 28)
+size = Vector2(180, 28)
 
 [node name="Node2D" type="Node2D" unique_id=1254144130]
 
 [node name="Gnome" type="RigidBody2D" parent="." unique_id=1494085686]
-position = Vector2(272, 40)
+position = Vector2(166, 52)
 physics_material_override = SubResource("PhysicsMaterial_0f027")
 contact_monitor = true
 max_contacts_reported = 1
@@ -74,7 +74,7 @@ polygon = PackedVector2Array(3, -1, 43, 76, 187, 213, 331, 281, -6, 280, 2.08911
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=273026508]
-position = Vector2(272, 40)
+position = Vector2(166, 52)
 zoom = Vector2(2, 2)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1492267268]
@@ -93,12 +93,10 @@ metadata/_edit_lock_ = true
 position = Vector2(841, 400)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D4" unique_id=2116913240]
-offset_left = -329.0
-offset_top = -2.0
-offset_right = 571.0
+offset_right = 180.0
 offset_bottom = 28.0
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1540362163]
 position = Vector2(90, 14)
 shape = SubResource("RectangleShape2D_d5x1h")
-metadata/_edit_lock_ = true

@@ -12,7 +12,7 @@ size = Vector2(16, 16)
 size = Vector2(424, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
-size = Vector2(238, 28)
+size = Vector2(180, 28)
 
 [node name="Node2D" type="Node2D" unique_id=1254144130]
 
@@ -93,12 +93,10 @@ metadata/_edit_lock_ = true
 position = Vector2(841, 400)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D4" unique_id=2116913240]
-offset_left = -329.0
-offset_top = -2.0
-offset_right = 571.0
+offset_right = 180.0
 offset_bottom = 28.0
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1540362163]
 position = Vector2(90, 14)
 shape = SubResource("RectangleShape2D_d5x1h")
-metadata/_edit_lock_ = true
