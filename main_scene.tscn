@@ -6,7 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c62f"]
 size = Vector2(424, 320)
 
+[sub_resource type="Gradient" id="Gradient_2c62f"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gyfs4"]
+gradient = SubResource("Gradient_2c62f")
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f027"]
+rough = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2c62f"]
 atlas = ExtResource("1_0f027")
@@ -39,19 +47,21 @@ size = Vector2(238, 28)
 [node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1236146325]
 position = Vector2(1349, 118)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D5" unique_id=1026745479]
-offset_right = 424.0
-offset_bottom = 320.0
-metadata/_edit_lock_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=470856682]
 position = Vector2(212, 160)
 shape = SubResource("RectangleShape2D_2c62f")
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=2052225535]
+position = Vector2(211.99998, 159.99998)
+scale = Vector2(1.6562499, 319.99997)
+texture = SubResource("GradientTexture1D_gyfs4")
+metadata/_edit_lock_ = true
+
 [node name="Gnome" type="RigidBody2D" parent="." unique_id=1494085686]
 position = Vector2(272, 40)
 physics_material_override = SubResource("PhysicsMaterial_0f027")
+can_sleep = false
 continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 1
@@ -80,14 +90,15 @@ remote_path = NodePath("../../Camera2D")
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=117184216]
 position = Vector2(89, 118)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2" unique_id=112932677]
-offset_right = 424.0
-offset_bottom = 320.0
-metadata/_edit_lock_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=474296688]
 position = Vector2(212, 160)
 shape = SubResource("RectangleShape2D_2c62f")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1697895671]
+position = Vector2(211.99998, 159.99998)
+scale = Vector2(1.6562499, 319.99997)
+texture = SubResource("GradientTexture1D_gyfs4")
 metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=849055506]
@@ -120,12 +131,11 @@ metadata/_edit_lock_ = true
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1061177082]
 position = Vector2(841, 400)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D4" unique_id=2116913240]
-offset_left = -329.0
-offset_top = -2.0
-offset_right = 571.0
-offset_bottom = 28.0
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=583067041]
+position = Vector2(106, 159)
+scale = Vector2(1.6562499, 319.99997)
+texture = SubResource("GradientTexture1D_gyfs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1540362163]
-position = Vector2(90, 12)
+position = Vector2(96, 13)
 shape = SubResource("RectangleShape2D_d5x1h")
