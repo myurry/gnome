@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dpkpwo21jir6a"]
+
+[ext_resource type="Script" uid="uid://bhehrgvyvpbms" path="res://scripts/gnome.gd" id="1_qe4o5"]
+[ext_resource type="Texture2D" uid="uid://bo46wsjxpqok3" path="res://assets/tupoi_gnome.png" id="2_5vlar"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f027"]
+rough = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c62f"]
+atlas = ExtResource("2_5vlar")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Curve" id="Curve_2c62f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gyfs4"]
+curve = SubResource("Curve_2c62f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gyfs4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 0.79999995
+scale_max = 0.79999995
+scale_over_velocity_min = 275.68
+scale_over_velocity_max = 1000.0
+alpha_curve = SubResource("CurveTexture_gyfs4")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c62f"]
+radius = 8.0
+
+[node name="Gnome" type="RigidBody2D" unique_id=1081649657]
+physics_material_override = SubResource("PhysicsMaterial_0f027")
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_qe4o5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=668501778]
+emitting = false
+amount = 16
+texture = SubResource("AtlasTexture_2c62f")
+lifetime = 0.24
+process_material = SubResource("ParticleProcessMaterial_gyfs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=904091650]
+texture = ExtResource("2_5vlar")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049297583]
+shape = SubResource("CircleShape2D_2c62f")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=964112698]
+remote_path = NodePath("../../Camera2D")

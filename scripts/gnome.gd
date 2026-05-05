@@ -7,7 +7,7 @@ const ANGULAR_SPEED = 10
 const FRICTION = 1
 const GRAVITY = 1
 const BALL_FRICTION = 0.7
-
+const JUMP_SPEED = 700
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,16 +19,16 @@ func _process(delta: float) -> void:
 	pass
 	
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if (Input.is_action_pressed("right")):
-		print("123")
 	if ball_mode:
 		if self.linear_velocity.length() > 10:
 			get_node("GPUParticles2D").emitting = true
 		else:
 			get_node("GPUParticles2D").emitting = false
+			
 	if !ball_mode:
 		self.rotation = 0
 		get_node("GPUParticles2D").emitting = false
+		
 	if (Input.is_action_just_released("mode")):
 		self.angular_velocity = 0
 		self.linear_velocity = Vector2.ZERO
@@ -45,10 +45,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			get_node("GPUParticles2D").emitting = true
 			self.linear_velocity.x = BALL_SPEED
 			
-		
 	if (Input.is_action_pressed("left")):
 		if !ball_mode:
 			self.linear_velocity.x = -SPEED
 		else:
 			self.linear_velocity.x = -BALL_SPEED
+			
+	if (Input.is_action_just_pressed("action")):
+		if ball_mode:
+			self.linear_velocity.y = -JUMP_SPEED
 		

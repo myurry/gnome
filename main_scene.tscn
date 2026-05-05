@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bfy8p8ciupbdy"]
 
-[ext_resource type="Texture2D" uid="uid://bo46wsjxpqok3" path="res://assets/tupoi_gnome.png" id="1_0f027"]
-[ext_resource type="Script" uid="uid://bhehrgvyvpbms" path="res://scripts/gnome.gd" id="1_2c62f"]
+[ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://gnome.tscn" id="1_0f027"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c62f"]
 size = Vector2(424, 320)
@@ -12,32 +11,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gyfs4"]
 gradient = SubResource("Gradient_2c62f")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f027"]
-rough = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2c62f"]
-atlas = ExtResource("1_0f027")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="Curve" id="Curve_2c62f"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_gyfs4"]
-curve = SubResource("Curve_2c62f")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gyfs4"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
-scale_min = 0.79999995
-scale_max = 0.79999995
-scale_over_velocity_min = 275.68
-scale_over_velocity_max = 1000.0
-alpha_curve = SubResource("CurveTexture_gyfs4")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
-size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
 size = Vector2(238, 28)
@@ -58,34 +31,8 @@ scale = Vector2(1.6562499, 319.99997)
 texture = SubResource("GradientTexture1D_gyfs4")
 metadata/_edit_lock_ = true
 
-[node name="Gnome" type="RigidBody2D" parent="." unique_id=1494085686]
+[node name="Gnome" parent="." unique_id=1081649657 instance=ExtResource("1_0f027")]
 position = Vector2(272, 40)
-physics_material_override = SubResource("PhysicsMaterial_0f027")
-can_sleep = false
-continuous_cd = 2
-contact_monitor = true
-max_contacts_reported = 1
-script = ExtResource("1_2c62f")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Gnome" unique_id=1772765245]
-emitting = false
-amount = 16
-texture = SubResource("AtlasTexture_2c62f")
-lifetime = 0.24
-process_material = SubResource("ParticleProcessMaterial_gyfs4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Gnome" unique_id=50969165]
-texture = ExtResource("1_0f027")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gnome" unique_id=1329515583]
-shape = SubResource("RectangleShape2D_gyfs4")
-metadata/_edit_lock_ = true
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Gnome" unique_id=1348306434]
-remote_path = NodePath("../../Camera2D")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=117184216]
 position = Vector2(89, 118)
