@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfy8p8ciupbdy"]
 
 [ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://gnome.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://csvi5vdldmxck" path="res://gribok.tscn" id="2_2c62f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c62f"]
 size = Vector2(424, 320)
@@ -16,6 +17,21 @@ gradient = SubResource("Gradient_2c62f")
 size = Vector2(238, 28)
 
 [node name="Node2D" type="Node2D" unique_id=1254144130]
+
+[node name="gribok" parent="." unique_id=984493450 instance=ExtResource("2_2c62f")]
+position = Vector2(902, 391)
+
+[node name="gribok5" parent="." unique_id=630232375 instance=ExtResource("2_2c62f")]
+position = Vector2(502, 108)
+
+[node name="gribok3" parent="." unique_id=1397339430 instance=ExtResource("2_2c62f")]
+position = Vector2(966, 391)
+
+[node name="gribok4" parent="." unique_id=73610291 instance=ExtResource("2_2c62f")]
+position = Vector2(1005, 391)
+
+[node name="gribok2" parent="." unique_id=1199515709 instance=ExtResource("2_2c62f")]
+position = Vector2(861, 391)
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1236146325]
 position = Vector2(1349, 118)

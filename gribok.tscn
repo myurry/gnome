@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://csvi5vdldmxck"]
+
+[ext_resource type="Texture2D" uid="uid://bowu4suk82wko" path="res://assets/grib.png" id="1_0rre1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyfs4"]
+radius = 6.0
+
+[node name="gribok" type="StaticBody2D" unique_id=984493450]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1106470830]
+texture = ExtResource("1_0rre1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1966253769]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_gyfs4")
