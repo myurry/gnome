@@ -27,7 +27,7 @@ scale_over_velocity_max = 1000.0
 alpha_curve = SubResource("CurveTexture_gyfs4")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c62f"]
-radius = 8.0
+radius = 6.0
 
 [node name="Gnome" type="RigidBody2D" unique_id=1081649657]
 physics_material_override = SubResource("PhysicsMaterial_0f027")
