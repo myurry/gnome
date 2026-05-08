@@ -26,8 +26,8 @@ scale_over_velocity_min = 275.68
 scale_over_velocity_max = 1000.0
 alpha_curve = SubResource("CurveTexture_gyfs4")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2c62f"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4o5"]
+size = Vector2(12, 12)
 
 [node name="Gnome" type="RigidBody2D" unique_id=1081649657]
 physics_material_override = SubResource("PhysicsMaterial_0f027")
@@ -51,7 +51,7 @@ region_rect = Rect2(0, 0, 16, 16)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049297583]
-shape = SubResource("CircleShape2D_2c62f")
+shape = SubResource("RectangleShape2D_qe4o5")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=964112698]
 remote_path = NodePath("../../Camera2D")
