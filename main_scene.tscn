@@ -152,6 +152,10 @@ texture = ExtResource("3_gyfs4")
 7:9/0 = 0
 8:9/0 = 0
 9:9/0 = 0
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0.10152531, 4.111785, 0.10152531, -8, 8, -8, 8, 8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.10152531, -4.111785, 0.10152531, 8, 8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_8mm7a"]
 physics_layer_0/collision_layer = 1
