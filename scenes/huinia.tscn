@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crfj7"]
-size = Vector2(10, 7)
+size = Vector2(8, 5.5)
 
 [node name="Huinia" type="Node2D" unique_id=227642362]
 script = ExtResource("1_crfj7")
@@ -45,9 +45,9 @@ autoplay = "default"
 frame_progress = 0.17527273
 
 [node name="Killzone" parent="." unique_id=582040214 instance=ExtResource("2_xe3iy")]
+position = Vector2(0, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=152101842]
-position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_crfj7")
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=232603322]

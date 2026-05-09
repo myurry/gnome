@@ -1,22 +1,29 @@
 extends RigidBody2D
 
 var ball_mode = false
-const BALL_SPEED = 300
-const SPEED = 50
+var on_ground = false
+const BALL_SPEED = 150
+const SPEED = 75
 const FRICTION = 1
 const BALL_FRICTION = 0.7
-const JUMP_SPEED = 700
+const JUMP_SPEED = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
-	self.gravity_scale = 3.5
+	self.gravity_scale = 1.5
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Calledx every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	$GroundCast.global_position = Vector2(position.x, position.y + 6)
+	$GroundCast.global_rotation = 0
+	if (!$GroundCast.is_colliding()):
+		on_ground = false;
+	else:
+		on_ground = true;
 	if ball_mode:
 		if self.linear_velocity.length() > 10:
 			get_node("GPUParticles2D").emitting = true
@@ -52,7 +59,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		else:
 			self.linear_velocity.x = -BALL_SPEED
 			
-	if (Input.is_action_just_pressed("action")):
+	if (Input.is_action_just_pressed("action") && on_ground):
 		if ball_mode:
 			self.linear_velocity.y = -JUMP_SPEED
 		
