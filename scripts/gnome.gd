@@ -32,8 +32,12 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		ball_mode = !ball_mode
 		if ball_mode:
 			self.physics_material_override.friction = BALL_FRICTION
+			get_node("ball_form").set_deferred('disabled', false)
+			get_node("gnome_form").set_deferred('disabled', true)
 		else:
 			self.physics_material_override.friction = FRICTION
+			get_node("ball_form").set_deferred('disabled', true)
+			get_node("gnome_form").set_deferred('disabled', false)
 		
 	if (Input.is_action_pressed("right")):
 		if !ball_mode:
