@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://csvi5vdldmxck" path="res://gribok.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://bcx0cqsxtcgb5" path="res://scenes/huinia.tscn" id="2_d5x1h"]
 [ext_resource type="Texture2D" uid="uid://76720f1fiap6" path="res://assets/gribolevel.png" id="3_gyfs4"]
+[ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="5_8mm7a"]
+[ext_resource type="PackedScene" uid="uid://c88ehy260kg5r" path="res://scenes/killzone.tscn" id="6_hq1ik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5x1h"]
 texture = ExtResource("3_gyfs4")
@@ -168,6 +170,9 @@ texture = ExtResource("3_gyfs4")
 [sub_resource type="TileSet" id="TileSet_d5x1h"]
 sources/0 = SubResource("TileSetAtlasSource_gyfs4")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfk4m"]
+size = Vector2(892, 31)
+
 [node name="Node2D" type="Node2D" unique_id=1254144130]
 
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=2011715392]
@@ -209,3 +214,20 @@ collision_layer = 1
 [node name="Camera2D" type="Camera2D" parent="." unique_id=273026508]
 position = Vector2(272, 40)
 zoom = Vector2(4, 4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=498906443]
+stream = ExtResource("5_8mm7a")
+volume_db = -10.947
+autoplay = true
+
+[node name="Killzone" parent="." unique_id=582040214 instance=ExtResource("6_hq1ik")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=712361095]
+position = Vector2(1824, 517)
+shape = SubResource("RectangleShape2D_nfk4m")
+
+[node name="Killzone" parent="Killzone" unique_id=1185126542 instance=ExtResource("6_hq1ik")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/Killzone" unique_id=2063285624]
+position = Vector2(81, 551)
+shape = SubResource("RectangleShape2D_nfk4m")

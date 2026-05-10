@@ -46,6 +46,7 @@ frame_progress = 0.17527273
 
 [node name="Killzone" parent="." unique_id=582040214 instance=ExtResource("2_xe3iy")]
 position = Vector2(0, 4)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=152101842]
 shape = SubResource("RectangleShape2D_crfj7")
