@@ -20,9 +20,9 @@ func _process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	$GroundCast.global_position = Vector2(position.x, position.y + 6)
 	$GroundCast.global_rotation = 0
-	if (!$GroundCast.is_colliding()):
-		on_ground = false;
-	else:
+	if (!$GroundCast.is_colliding() && $GroundTimer.is_stopped()):
+		$GroundTimer.start();
+	elif ($GroundCast.is_colliding()):
 		on_ground = true;
 	if ball_mode:
 		if self.linear_velocity.length() > 10:
@@ -63,3 +63,5 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if ball_mode:
 			self.linear_velocity.y = -JUMP_SPEED
 		
+func _on_ground_timer_timeout() -> void:
+	on_ground = false;
