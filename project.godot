@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gnome"
-run/main_scene="uid://bfy8p8ciupbdy"
+run/main_scene="uid://c6gv2g8fs28s5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
