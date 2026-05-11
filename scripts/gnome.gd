@@ -9,8 +9,7 @@ const BALL_FRICTION = 0.7
 const JUMP_SPEED = 400
 
 @export var jump_sound: AudioStream
-@export var run_sound: AudioStream
-@export var walk_sound: AudioStream
+@export var shoot_sound: AudioStream
 @onready var audio = $AudioStreamPlayer
 
 
@@ -67,19 +66,14 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		else:
 			self.linear_velocity.x = -BALL_SPEED
 	
-	if self.linear_velocity.x > 100 or self.linear_velocity.x < -100:
-		if !audio.playing:
-			if ball_mode:
-				audio.stream = run_sound
-			else: 
-				audio.stream = walk_sound
-			audio.play()		
-	
 	if (Input.is_action_just_pressed("action") && on_ground):
 		if ball_mode:
 			audio.stream = jump_sound
 			audio.play()
 			self.linear_velocity.y = -JUMP_SPEED
+		else:
+			audio.stream = shoot_sound
+			audio.play()
 		
 func _on_ground_timer_timeout() -> void:
 	on_ground = false;
