@@ -8,6 +8,14 @@ const FRICTION = 1
 const BALL_FRICTION = 0.7
 const JUMP_SPEED = 400
 
+@export var jump_sound: AudioStream
+@export var run_sound: AudioStream
+@export var walk_sound: AudioStream
+@onready var audio = $AudioStreamPlayer
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
@@ -47,6 +55,12 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			get_node("gnome_form").set_deferred('disabled', false)
 		
 	if (Input.is_action_pressed("right")):
+		if !audio.playing:
+			if ball_mode:
+				audio.stream = run_sound
+			else: 
+				audio.stream = walk_sound
+			audio.play()
 		if !ball_mode:
 			self.linear_velocity.x = SPEED
 		else:
@@ -54,6 +68,12 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			self.linear_velocity.x = BALL_SPEED
 			
 	if (Input.is_action_pressed("left")):
+		if !audio.playing:
+			if ball_mode:
+				audio.stream = run_sound
+			else: 
+				audio.stream = walk_sound
+			audio.play()
 		if !ball_mode:
 			self.linear_velocity.x = -SPEED
 		else:
@@ -61,6 +81,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			
 	if (Input.is_action_just_pressed("action") && on_ground):
 		if ball_mode:
+			audio.stream = jump_sound
+			audio.play()
 			self.linear_velocity.y = -JUMP_SPEED
 		
 func _on_ground_timer_timeout() -> void:
