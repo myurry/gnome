@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c6gv2g8fs28s5"]
 
 [ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://gnome.tscn" id="1_2ddto"]
-[ext_resource type="Shader" uid="uid://deu4pu3uxftgy" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
+[ext_resource type="Shader" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
@@ -16,8 +16,11 @@ shader_parameter/speed = 2.0
 
 [node name="Gnome" parent="." unique_id=1081649657 instance=ExtResource("1_2ddto")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=608826889]
+[node name="Camera2D" type="Camera2D" parent="Gnome" unique_id=608826889]
+unique_name_in_owner = true
 zoom = Vector2(4, 4)
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 50.0
 
 [node name="Foreground" parent="." unique_id=1190554066 instance=ExtResource("2_rgld7")]
 z_index = 0
