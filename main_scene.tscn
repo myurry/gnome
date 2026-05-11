@@ -195,17 +195,20 @@ position = Vector2(455, 104)
 
 [node name="gribok" parent="." unique_id=984493450 instance=ExtResource("2_2c62f")]
 position = Vector2(902, 391)
+collision_layer = 4
 
 [node name="gribok5" parent="." unique_id=630232375 instance=ExtResource("2_2c62f")]
 position = Vector2(502, 108)
-collision_layer = 1
+collision_layer = 4
 collision_mask = 2
 
 [node name="gribok4" parent="." unique_id=73610291 instance=ExtResource("2_2c62f")]
 position = Vector2(1005, 391)
+collision_layer = 4
 
 [node name="gribok2" parent="." unique_id=1199515709 instance=ExtResource("2_2c62f")]
 position = Vector2(861, 391)
+collision_layer = 4
 
 [node name="Gnome" parent="." unique_id=1081649657 instance=ExtResource("1_0f027")]
 position = Vector2(272, 40)
@@ -226,8 +229,8 @@ autoplay = true
 position = Vector2(1824, 517)
 shape = SubResource("RectangleShape2D_nfk4m")
 
-[node name="Killzone" parent="Killzone" unique_id=1185126542 instance=ExtResource("6_hq1ik")]
+[node name="Killzone2" parent="." unique_id=1185126542 instance=ExtResource("6_hq1ik")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone/Killzone" unique_id=2063285624]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone2" unique_id=2063285624]
 position = Vector2(81, 551)
 shape = SubResource("RectangleShape2D_nfk4m")
