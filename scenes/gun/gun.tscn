@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bllynslnk458m"]
+
+[ext_resource type="Script" uid="uid://ppvd15jxyqju" path="res://scenes/gun/gun.gd" id="1_fjnj2"]
+[ext_resource type="Texture2D" uid="uid://cd0xx26t7tttp" path="res://scenes/gun/gun.png" id="1_s1tky"]
+
+[node name="Gun" type="Node2D" unique_id=571785293]
+script = ExtResource("1_fjnj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1158717329]
+position = Vector2(5, -2)
+texture = ExtResource("1_s1tky")
+
+[node name="FireLocation" type="Node2D" parent="." unique_id=903636601]
+position = Vector2(13, -3)

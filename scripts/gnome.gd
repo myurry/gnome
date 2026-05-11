@@ -7,18 +7,22 @@ const SPEED = 75
 const FRICTION = 1
 const BALL_FRICTION = 0.7
 const JUMP_SPEED = 400
+const BULLET = preload("res://scenes/bullet/bullet.tscn")
 
 @export var jump_sound: AudioStream
 @export var shoot_sound: AudioStream
 @onready var audio = $AudioStreamPlayer
 
+@onready var gun: Node2D = $Gun
+@onready var shoot_timer: Timer = $ShootTimer
 
-
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
 	self.gravity_scale = 1.5
+	gun.hide()
 
 # Calledx every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -68,12 +72,46 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if (Input.is_action_just_pressed("action") && on_ground):
 		if ball_mode:
-			audio.stream = jump_sound
-			audio.play()
-			self.linear_velocity.y = -JUMP_SPEED
+			jump()
 		else:
-			audio.stream = shoot_sound
-			audio.play()
+			if (Input.is_action_pressed("ui_up")):
+				shoot("up", "right")
+			elif (Input.is_action_pressed("ui_down")):
+				shoot("down", "right")
+			else:
+				shoot("forward", "right")
 		
 func _on_ground_timer_timeout() -> void:
 	on_ground = false;
+	
+func shoot(direction:String, side:String) -> void:
+	gun.show()
+	
+	match direction:
+		"up":
+			gun.rotation = -0.610865238
+		"forward":
+			gun.rotation = 0
+		"down":
+			gun.rotation = 0.610865238
+		
+	var bullet_instance = BULLET.instantiate()
+	get_tree().root.add_child(bullet_instance)
+	bullet_instance.global_position = gun.fire_location.global_position
+	bullet_instance.rotation = gun.rotation
+	
+	audio.stream = shoot_sound
+	audio.play()
+	
+	shoot_timer.start()
+	
+	
+	
+func jump() -> void:
+	audio.stream = jump_sound
+	audio.play()
+	self.linear_velocity.y = -JUMP_SPEED
+
+
+func _on_shoot_timer_timeout() -> void:
+	gun.hide()
