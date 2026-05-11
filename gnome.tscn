@@ -85,11 +85,6 @@ one_shot = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1879228682]
 
 [node name="Gun" parent="." unique_id=571785293 instance=ExtResource("5_4jxkh")]
-visible = false
 position = Vector2(5, 3)
 
-[node name="ShootTimer" type="Timer" parent="." unique_id=1008466984]
-wait_time = 0.3
-
 [connection signal="timeout" from="GroundTimer" to="." method="_on_ground_timer_timeout"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

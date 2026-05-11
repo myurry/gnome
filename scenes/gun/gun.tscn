@@ -10,5 +10,5 @@ script = ExtResource("1_fjnj2")
 position = Vector2(5, -2)
 texture = ExtResource("1_s1tky")
 
-[node name="FireLocation" type="Node2D" parent="." unique_id=903636601]
+[node name="Muzzle" type="Node2D" parent="." unique_id=903636601]
 position = Vector2(13, -3)
