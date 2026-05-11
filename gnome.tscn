@@ -72,3 +72,9 @@ disabled = true
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5vlar")
 target_position = Vector2(0, 2)
+
+[node name="GroundTimer" type="Timer" parent="." unique_id=29217323]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="GroundTimer" to="." method="_on_ground_timer_timeout"]

@@ -1,7 +1,16 @@
 [gd_scene format=4 uid="uid://c6gv2g8fs28s5"]
 
 [ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://gnome.tscn" id="1_2ddto"]
+[ext_resource type="Shader" uid="uid://deu4pu3uxftgy" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
+shader = ExtResource("1_a8pr3")
+shader_parameter/strength = 0.05
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8pr3"]
 
 [node name="Sandbox" type="Node2D" unique_id=852368408]
 
@@ -14,4 +23,13 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 50.0
 
 [node name="Foreground" parent="." unique_id=1190554066 instance=ExtResource("2_rgld7")]
+z_index = 0
 tile_map_data = PackedByteArray("AAD3//r/AAAAAAgAAAD3//v/AAAAAAgAAAD3//z/AAAAAAgAAAD3//3/AAAAAAgAAAD3//7/AAAAAAgAAAD3////AAAAAAgAAAD3/wAAAAAAAAgAAAD3/wEAAAAAAAgAAAD3/wIAAAAAAAgAAAD3/wMAAAAAAAgAAAD3/wQAAAAAAAgAAAD3/wUAAAAAAAgAAAD3/wYAAAAAAAgAAAD4/wYAAAAAAAgAAAD5/wYAAAAAAAgAAAD6/wYAAAAAAAgAAAD7/wYAAAAAAAgAAAD8/wYAAAAAAAgAAAD9/wYAAAAAAAgAAAD+/wYAAAAAAAgAAAD//wYAAAAAAAgAAAAAAAYAAAAAAAgAAAABAAYAAAAAAAgAAAACAAYAAAAAAAgAAAADAAYAAAAAAAgAAAAEAAYAAAAAAAgAAAAFAAYAAAAAAAgAAAAGAAYAAAAAAAgAAAAHAAYAAAAAAAgAAAAIAAYAAAAAAAgAAAAIAPr/AAAAAAgAAAAIAPv/AAAAAAgAAAAIAPz/AAAAAAgAAAAIAP3/AAAAAAgAAAAIAP7/AAAAAAgAAAAIAP//AAAAAAgAAAAIAAAAAAAAAAgAAAAIAAEAAAAAAAgAAAAIAAIAAAAAAAgAAAAIAAMAAAAAAAgAAAAIAAQAAAAAAAgAAAAIAAUAAAAAAAgAAAD4//r/AAAAAAgAAAD5//r/AAAAAAgAAAD6//r/AAAAAAgAAAD7//r/AAAAAAgAAAD8//r/AAAAAAgAAAD9//r/AAAAAAgAAAD+//r/AAAAAAgAAAD///r/AAAAAAgAAAAAAPr/AAAAAAgAAAABAPr/AAAAAAgAAAACAPr/AAAAAAgAAAADAPr/AAAAAAgAAAAEAPr/AAAAAAgAAAAFAPr/AAAAAAgAAAAGAPr/AAAAAAgAAAAHAPr/AAAAAAgAAAADAAMAAAACAAUAAAAEAAMAAAADAAUAAAAFAAMAAAAEAAUAAAD8/wEAAAACAAUAAAD9/wEAAAADAAUAAAD+/wEAAAAEAAUAAAA=")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=981320634]
+material = SubResource("ShaderMaterial_a8pr3")
+offset_left = -284.0
+offset_top = -214.0
+offset_right = 294.0
+offset_bottom = 239.0
+texture = SubResource("ViewportTexture_a8pr3")
