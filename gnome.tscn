@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bhehrgvyvpbms" path="res://scripts/gnome.gd" id="1_qe4o5"]
 [ext_resource type="Texture2D" uid="uid://bo46wsjxpqok3" path="res://assets/tupoi_gnome.png" id="2_5vlar"]
+[ext_resource type="AudioStream" uid="uid://ctmr4umx1a0ma" path="res://assets/sounds/jump1.wav" id="2_dt2vp"]
+[ext_resource type="AudioStream" uid="uid://c7bedpntw1750" path="res://assets/sounds/run1.wav" id="3_dt2vp"]
+[ext_resource type="AudioStream" uid="uid://fmxldw5838qq" path="res://assets/sounds/run2.wav" id="4_4jxkh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f027"]
 rough = true
@@ -44,6 +47,9 @@ continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_qe4o5")
+jump_sound = ExtResource("2_dt2vp")
+run_sound = ExtResource("3_dt2vp")
+walk_sound = ExtResource("4_4jxkh")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=668501778]
 emitting = false
@@ -76,5 +82,7 @@ target_position = Vector2(0, 2)
 [node name="GroundTimer" type="Timer" parent="." unique_id=29217323]
 wait_time = 0.1
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1879228682]
 
 [connection signal="timeout" from="GroundTimer" to="." method="_on_ground_timer_timeout"]
