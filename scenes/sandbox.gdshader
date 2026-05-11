@@ -15,5 +15,5 @@ void fragment() {
     vec4 screen_color = texture(screen_texture, uv);
 
     vec3 animated_color = vec3(r, g, b);
-    COLOR = vec4(animated_color * screen_color.rgb, screen_color.a) ;
+    COLOR = vec4(animated_color * screen_color.rgb, screen_color.a);
 }
