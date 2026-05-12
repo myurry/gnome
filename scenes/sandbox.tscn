@@ -5,15 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_j6lu3"]
 <<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dmffwn2ssmjih" path="res://scenes/kotik.tscn" id="5_tpt06"]
-=======
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bwv7fp4x0vc6q" path="res://scenes/cat.gd" id="5_16ffl"]
 [ext_resource type="Texture2D" uid="uid://53xbnx0d5ih2" path="res://assets/propellercat.png" id="5_tpt06"]
 =======
 [ext_resource type="PackedScene" uid="uid://bcx0cqsxtcgb5" path="res://scenes/huinia.tscn" id="5_tpt06"]
 >>>>>>> f98768e40ab5caf24d5d6836d647010619c24b7a
->>>>>>> 20cadaa9788a0d1b280663d5f543c5f0c61608bf
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
 shader = ExtResource("1_a8pr3")
@@ -22,6 +18,15 @@ shader_parameter/frequency = 10.0
 shader_parameter/speed = 2.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_a8pr3"]
+
+[sub_resource type="Curve2D" id="Curve2D_17a3a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -13, 15, 0, 0, 0, 0, -38, 23, 0, 0, 0, 0, -58, 17, 0, 0, 0, 0, -79, 4, 0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ffl"]
+size = Vector2(32, 44)
 
 [node name="Sandbox" type="Node2D" unique_id=852368408]
 
@@ -52,10 +57,6 @@ volume_db = -80.0
 autoplay = true
 
 <<<<<<< HEAD
-[node name="Kotik" parent="." unique_id=872336334 instance=ExtResource("5_tpt06")]
-position = Vector2(121, 8)
-=======
-<<<<<<< HEAD
 [node name="Kotik" type="Node2D" parent="." unique_id=1118087844]
 position = Vector2(121, 8)
 
@@ -79,4 +80,3 @@ texture = ExtResource("5_tpt06")
 [node name="Huinia" parent="." unique_id=227642362 instance=ExtResource("5_tpt06")]
 position = Vector2(89, 40)
 >>>>>>> f98768e40ab5caf24d5d6836d647010619c24b7a
->>>>>>> 20cadaa9788a0d1b280663d5f543c5f0c61608bf
