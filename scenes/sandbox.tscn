@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://deu4pu3uxftgy" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_j6lu3"]
+[ext_resource type="PackedScene" uid="uid://bcx0cqsxtcgb5" path="res://scenes/huinia.tscn" id="5_tpt06"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
 shader = ExtResource("1_a8pr3")
@@ -39,3 +40,6 @@ texture = SubResource("ViewportTexture_a8pr3")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1483672343]
 stream = ExtResource("4_j6lu3")
 autoplay = true
+
+[node name="Huinia" parent="." unique_id=227642362 instance=ExtResource("5_tpt06")]
+position = Vector2(89, 40)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://tpjeghp45pkx"]
+
+[ext_resource type="Script" uid="uid://dyq5j3f5br0n1" path="res://scenes/freezone.gd" id="1_4y3co"]
+
+[node name="freezone" type="Area2D" unique_id=1237599220]
+script = ExtResource("1_4y3co")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

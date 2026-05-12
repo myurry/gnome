@@ -7,7 +7,9 @@ const SPEED = 75
 const FRICTION = 1
 const BALL_FRICTION = 0.7
 const JUMP_SPEED = 400
+
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
+
 @onready var gpu_particles: GPUParticles2D = $GPUParticles2D
 
 @onready var ball_form: CollisionShape2D = $ball_form
@@ -77,10 +79,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		else:
 			self.linear_velocity.x = -BALL_SPEED
 	
-	if (Input.is_action_just_pressed("action") && on_ground):
-		if ball_mode:
+	if (Input.is_action_just_pressed("action")):
+		if ball_mode && on_ground:
 			jump()
-		else:
+		elif !ball_mode:
 			if (Input.is_action_pressed("ui_up")):
 				shoot("up")
 			elif (Input.is_action_pressed("ui_down")):
@@ -104,14 +106,13 @@ func shoot(aim_direction:String) -> void:
 		
 		
 	var bullet_instance = BULLET.instantiate()
-	get_tree().root.add_child(bullet_instance)
+	get_tree().root.call_deferred("add_child", bullet_instance)
 	bullet_instance.global_position = gun.muzzle.global_position
 	bullet_instance.rotation = gun.rotation + (deg_to_rad(180) if gun.scale.x == -1 else 0)
 
 
 	audio.stream = shoot_sound
 	audio.play()
-	
 	
 
 func switch_to_right_hand() -> void:
