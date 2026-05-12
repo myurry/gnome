@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dmffwn2ssmjih"]
+
+[ext_resource type="Script" uid="uid://bwv7fp4x0vc6q" path="res://scenes/cat.gd" id="1_3vtck"]
+[ext_resource type="Texture2D" uid="uid://53xbnx0d5ih2" path="res://assets/propellercat.png" id="2_0hmtp"]
+
+[sub_resource type="Curve2D" id="Curve2D_17a3a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -13, 15, 0, 0, 0, 0, -38, 23, 0, 0, 0, 0, -58, 17, 0, 0, 0, 0, -79, 4, 0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ffl"]
+size = Vector2(32, 44)
+
+[node name="Kotik" type="Node2D" unique_id=872336334]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=984263169]
+curve = SubResource("Curve2D_17a3a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1973787810]
+rotation = 2.284887
+rotates = false
+script = ExtResource("1_3vtck")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" unique_id=308856482]
+rotation = -2.284887
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=812767341]
+shape = SubResource("RectangleShape2D_16ffl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Area2D" unique_id=1366183581]
+texture = ExtResource("2_0hmtp")
