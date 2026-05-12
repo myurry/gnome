@@ -8,18 +8,26 @@ const FRICTION = 1
 const BALL_FRICTION = 0.7
 const JUMP_SPEED = 400
 
+const BULLET = preload("res://scenes/bullet/bullet.tscn")
+
+@onready var gpu_particles: GPUParticles2D = $GPUParticles2D
+
+@onready var ball_form: CollisionShape2D = $ball_form
+@onready var gnome_form: CollisionShape2D = $gnome_form
+
 @export var jump_sound: AudioStream
-@export var run_sound: AudioStream
-@export var walk_sound: AudioStream
+@export var shoot_sound: AudioStream
 @onready var audio = $AudioStreamPlayer
 
+@onready var gun: Node2D = $Gun
 
-
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
 	self.gravity_scale = 1.5
+	gun.hide()
 
 # Calledx every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,53 +41,90 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	elif ($GroundCast.is_colliding()):
 		on_ground = true;
 	if ball_mode:
+		gun.hide()
 		if self.linear_velocity.length() > 10:
-			get_node("GPUParticles2D").emitting = true
+			gpu_particles.emitting = true
 		else:
-			get_node("GPUParticles2D").emitting = false
+			gpu_particles.emitting = false
 			
 	if !ball_mode:
+		gun.show()
 		self.rotation = 0
-		get_node("GPUParticles2D").emitting = false
+		gpu_particles.emitting = false
 		
 	if (Input.is_action_just_pressed("mode")):
 		self.angular_velocity = 0
 		ball_mode = !ball_mode
 		if ball_mode:
 			self.physics_material_override.friction = BALL_FRICTION
-			get_node("ball_form").set_deferred('disabled', false)
-			get_node("gnome_form").set_deferred('disabled', true)
+			ball_form.set_deferred('disabled', false)
+			gnome_form.set_deferred('disabled', true)
 		else:
 			self.physics_material_override.friction = FRICTION
-			get_node("ball_form").set_deferred('disabled', true)
-			get_node("gnome_form").set_deferred('disabled', false)
+			ball_form.set_deferred('disabled', true)
+			gnome_form.set_deferred('disabled', false)
 		
 	if (Input.is_action_pressed("right")):
+		switch_to_right_hand()
 		if !ball_mode:
 			self.linear_velocity.x = SPEED
 		else:
-			get_node("GPUParticles2D").emitting = true
+			gpu_particles.emitting = true
 			self.linear_velocity.x = BALL_SPEED
 			
 	if (Input.is_action_pressed("left")):
+		switch_to_left_hand()
 		if !ball_mode:
 			self.linear_velocity.x = -SPEED
 		else:
 			self.linear_velocity.x = -BALL_SPEED
 	
-	if self.linear_velocity.x > 100 or self.linear_velocity.x < -100:
-		if !audio.playing:
-			if ball_mode:
-				audio.stream = run_sound
-			else: 
-				audio.stream = walk_sound
-			audio.play()		
-	
-	if (Input.is_action_just_pressed("action") && on_ground):
-		if ball_mode:
-			audio.stream = jump_sound
-			audio.play()
-			self.linear_velocity.y = -JUMP_SPEED
+	if (Input.is_action_just_pressed("action")):
+		if ball_mode && on_ground:
+			jump()
+		elif !ball_mode:
+			if (Input.is_action_pressed("ui_up")):
+				shoot("up")
+			elif (Input.is_action_pressed("ui_down")):
+				shoot("down")
+			else:
+				shoot("forward")
+		
 		
 func _on_ground_timer_timeout() -> void:
 	on_ground = false;
+	
+	
+func shoot(aim_direction:String) -> void:
+	match aim_direction:
+		"up":
+			gun.rotation = deg_to_rad(-35 * (1 if gun.scale.x == 1 else -1))
+		"forward":
+			gun.rotation = 0
+		"down":
+			gun.rotation = deg_to_rad(35 * (1 if gun.scale.x == 1 else -1))
+		
+		
+	var bullet_instance = BULLET.instantiate()
+	get_tree().root.call_deferred("add_child", bullet_instance)
+	bullet_instance.global_position = gun.muzzle.global_position
+	bullet_instance.rotation = gun.rotation + (deg_to_rad(180) if gun.scale.x == -1 else 0)
+
+
+	audio.stream = shoot_sound
+	audio.play()
+	
+
+func switch_to_right_hand() -> void:
+	gun.scale.x = 1
+	gun.position = Vector2(5, 3)
+	
+func switch_to_left_hand() -> void:
+	gun.scale.x = -1
+	gun.position = Vector2(-5, 3)
+	
+	
+func jump() -> void:
+	audio.stream = jump_sound
+	audio.play()
+	self.linear_velocity.y = -JUMP_SPEED
