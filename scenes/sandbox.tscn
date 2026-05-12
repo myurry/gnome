@@ -4,6 +4,8 @@
 [ext_resource type="Shader" uid="uid://deu4pu3uxftgy" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_j6lu3"]
+[ext_resource type="Script" uid="uid://bwv7fp4x0vc6q" path="res://scenes/cat.gd" id="5_16ffl"]
+[ext_resource type="Texture2D" uid="uid://53xbnx0d5ih2" path="res://assets/propellercat.png" id="5_tpt06"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
 shader = ExtResource("1_a8pr3")
@@ -12,6 +14,15 @@ shader_parameter/frequency = 10.0
 shader_parameter/speed = 2.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_a8pr3"]
+
+[sub_resource type="Curve2D" id="Curve2D_17a3a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -13, 15, 0, 0, 0, 0, -38, 23, 0, 0, 0, 0, -58, 17, 0, 0, 0, 0, -79, 4, 0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ffl"]
+size = Vector2(32, 44)
 
 [node name="Sandbox" type="Node2D" unique_id=852368408]
 
@@ -28,6 +39,7 @@ z_index = 0
 tile_map_data = PackedByteArray("AAD3//r/AAAAAAgAAAD3//v/AAAAAAgAAAD3//z/AAAAAAgAAAD3//3/AAAAAAgAAAD3//7/AAAAAAgAAAD3////AAAAAAgAAAD3/wAAAAAAAAgAAAD3/wEAAAAAAAgAAAD3/wIAAAAAAAgAAAD3/wMAAAAAAAgAAAD3/wQAAAAAAAgAAAD3/wUAAAAAAAgAAAD3/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAPr/AAAAAAgAAAAIAPv/AAAAAAgAAAAIAPz/AAAAAAgAAAAIAP3/AAAAAAgAAAAIAP7/AAAAAAgAAAAIAP//AAAAAAgAAAAIAAAAAAAAAAgAAAAIAAEAAAAAAAgAAAAIAAIAAAAAAAgAAAAIAAMAAAAAAAgAAAAIAAQAAAAAAAgAAAAIAAUAAAAAAAgAAAD4//r/AAAAAAgAAAD5//r/AAAAAAgAAAD6//r/AAAAAAgAAAD7//r/AAAAAAgAAAD8//r/AAAAAAgAAAD9//r/AAAAAAgAAAD+//r/AAAAAAgAAAD///r/AAAAAAgAAAAAAPr/AAAAAAgAAAABAPr/AAAAAAgAAAACAPr/AAAAAAgAAAADAPr/AAAAAAgAAAAEAPr/AAAAAAgAAAAFAPr/AAAAAAgAAAAGAPr/AAAAAAgAAAAHAPr/AAAAAAgAAAADAAMAAAACAAUAAAAEAAMAAAADAAUAAAAFAAMAAAAEAAUAAAD8/wEAAAACAAUAAAD9/wEAAAADAAUAAAD+/wEAAAAEAAUAAAD7/wUAAAAAAAMAAAD//wUAAAAAAAMAAAAFAAUAAAAAAAMAAAD9/wUAAAABAAkAAAADAAUAAAABAAkAAAABAAUAAAAHAAQAAAD5/wUAAAAHAAQAAAAEAAIAAAAFAAkAAAD8/wAAAAAFAAkAAAADAAIAAAAIAAkAAAA=")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=981320634]
+visible = false
 material = SubResource("ShaderMaterial_a8pr3")
 offset_left = -284.0
 offset_top = -214.0
@@ -37,4 +49,25 @@ texture = SubResource("ViewportTexture_a8pr3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1483672343]
 stream = ExtResource("4_j6lu3")
+volume_db = -80.0
 autoplay = true
+
+[node name="Kotik" type="Node2D" parent="." unique_id=1118087844]
+position = Vector2(121, 8)
+
+[node name="Path2D" type="Path2D" parent="Kotik" unique_id=1226726556]
+curve = SubResource("Curve2D_17a3a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Kotik/Path2D" unique_id=44478175]
+rotation = 2.284887
+rotates = false
+script = ExtResource("5_16ffl")
+
+[node name="Area2D" type="Area2D" parent="Kotik/Path2D/PathFollow2D" unique_id=900726200]
+rotation = -2.284887
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kotik/Path2D/PathFollow2D/Area2D" unique_id=1832949605]
+shape = SubResource("RectangleShape2D_16ffl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kotik/Path2D/PathFollow2D/Area2D" unique_id=96437545]
+texture = ExtResource("5_tpt06")
