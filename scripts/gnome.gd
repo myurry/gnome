@@ -1,16 +1,23 @@
 extends RigidBody2D
 
 var ball_mode = false
-var on_ground = false
-const BALL_SPEED = 150
+var horizontal_input: float = 0.0
 const SPEED = 75
 const FRICTION = 1
-const BALL_FRICTION = 0.7
+
+### DEPRECATED ###
+var on_ground = false
+const BALL_SPEED = 150
 const JUMP_SPEED = 400
+const BALL_FRICTION = 0.7
+
+
 
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
+@onready var state_machine: StateMachine = $StateMachine
 
 @onready var gpu_particles: GPUParticles2D = $GPUParticles2D
+@onready var ground_cast: ShapeCast2D = $GroundCast
 
 @onready var ball_form: CollisionShape2D = $ball_form
 @onready var gnome_form: CollisionShape2D = $gnome_form
@@ -28,10 +35,18 @@ func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
 	self.gravity_scale = 1.5
 	gun.hide()
+	
+	var states: Array[State] = [GnomeIdleState.new(self), GnomeRollState.new(self)]
+	state_machine.initialize_self(states)
 
 # Calledx every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+
+func _physics_process(delta: float) -> void:
+	horizontal_input = Input.get_action_strength("right") - Input.get_action_strength("left")
+	
 	
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	$GroundCast.global_position = Vector2(position.x, position.y + 6)
