@@ -37,13 +37,9 @@ const BULLET = preload("res://scenes/bullet/bullet.tscn")
 func _ready() -> void:
 	self.physics_material_override.friction = FRICTION
 	self.gravity_scale = 1.5
-<<<<<<< Updated upstream
-	gun.hide()
-	
-	var states: Array[State] = [GnomeIdleState.new(self), GnomeRollState.new(self)]
-=======
+
 	var states: Array[State] = [GnomeTurretState.new(self), GnomeRollState.new(self), GnomeJumpState.new(self)]
->>>>>>> Stashed changes
+
 	state_machine.initialize_self(states)
 
 # Calledx every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,46 +49,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	horizontal_input = Input.get_action_strength("right") - Input.get_action_strength("left")
-<<<<<<< Updated upstream
-	
-	
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	$GroundCast.global_position = Vector2(position.x, position.y + 6)
-	$GroundCast.global_rotation = 0
-	if (!$GroundCast.is_colliding() && $GroundTimer.is_stopped()):
-		$GroundTimer.start();
-	elif ($GroundCast.is_colliding()):
-		on_ground = true;
-	if ball_mode:
-		gun.hide()
-		if self.linear_velocity.length() > 10:
-			gpu_particles.emitting = true
-		else:
-			gpu_particles.emitting = false
-			
-	if !ball_mode:
-		gun.show()
-		self.rotation = 0
-		gpu_particles.emitting = false
-		
-=======
->>>>>>> Stashed changes
-	if (Input.is_action_just_pressed("mode")):
-		self.angular_velocity = 0
-		ball_mode = !ball_mode
-		if ball_mode:
-			ball_form.set_deferred('disabled', false)
-			gnome_form.set_deferred('disabled', true)
-		else:
-			ball_form.set_deferred('disabled', true)
-			gnome_form.set_deferred('disabled', false)
-	
-	ground_cast.global_position = Vector2(position.x, position.y + 6)
-	ground_cast.global_rotation = 0
-	if (ground_cast.is_colliding()):
-		on_ground = true;
-	else:
-		on_ground = false
+
 	
 	
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
