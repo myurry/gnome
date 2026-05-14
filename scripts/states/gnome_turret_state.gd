@@ -20,9 +20,9 @@ func enter() -> void:
 	gnome.ball_form.set_deferred('disabled', true)
 	gnome.gnome_form.set_deferred('disabled', false)
 	
-	if gnome.linear_velocity.x >= 0:
+	if gnome.linear_velocity.x > 2:
 		switch_to_right_hand()
-	else:
+	elif gnome.linear_velocity.x < -2:
 		switch_to_left_hand()
 		
 	

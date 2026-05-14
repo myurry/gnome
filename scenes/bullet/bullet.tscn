@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bapr1qf3ycfxk" path="res://scenes/bullet/bullet.png" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://tsxl67iwec7k" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
-[ext_resource type="PackedScene" uid="uid://c5hor7h30m851" path="res://freezone.tscn" id="3_c6pnf"]
+[ext_resource type="PackedScene" uid="uid://c5hor7h30m851" path="res://scenes/freezone.tscn" id="3_c6pnf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vdx3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6pnf"]
 size = Vector2(6, 4)
 
 [node name="Bullet" type="Node2D" unique_id=1655628109]
@@ -17,10 +17,9 @@ texture = ExtResource("1_7c8un")
 rect = Rect2(-44, -42, 88, 86)
 
 [node name="freezone" parent="." unique_id=1237599220 instance=ExtResource("3_c6pnf")]
-collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Freezone" unique_id=432092746]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="freezone" unique_id=562196659]
 position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_0vdx3")
+shape = SubResource("RectangleShape2D_c6pnf")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

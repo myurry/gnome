@@ -17,12 +17,6 @@ var _parent_node_name
 
 
 func initialize_self(init_states: Array[State]) -> void:
-
-	if is_log_enabled:
-		print("Запускаем шарманку...")
-	
-	
-
 	_parent_node_name = get_parent().name
 	if is_log_enabled:
 		print("Запускаем шарманку...")

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c6gv2g8fs28s5"]
 
-[ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://gnome.tscn" id="1_2ddto"]
+[ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://scenes/gnome.tscn" id="1_2ddto"]
 [ext_resource type="Shader" uid="uid://deu4pu3uxftgy" path="res://scenes/sandbox.gdshader" id="1_a8pr3"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_j6lu3"]
