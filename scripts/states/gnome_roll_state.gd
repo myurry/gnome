@@ -1,6 +1,5 @@
 class_name GnomeRollState extends GnomeState
 
-
 static var state_name = "GnomeRollState"
 
 

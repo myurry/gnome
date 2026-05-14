@@ -41,7 +41,6 @@ size = Vector2(12, 2)
 
 [node name="Gnome" type="RigidBody2D" unique_id=1081649657]
 collision_layer = 2
-collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_0f027")
 can_sleep = false
 continuous_cd = 2

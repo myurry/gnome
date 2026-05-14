@@ -1,7 +1,7 @@
 class_name GnomeJumpState extends GnomeState
 
-
 static var state_name = "GnomeJumpState"
+
 
 const JUMP_SPEED = 400
 const SPEED = 150

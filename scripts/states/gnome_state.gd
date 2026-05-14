@@ -11,4 +11,3 @@ func _init(gnome_rigidbody: RigidBody2D) -> void:
 	state_machine = gnome.state_machine
 	audio = gnome.audio
 	
-	pass
