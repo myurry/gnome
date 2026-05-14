@@ -11,14 +11,14 @@ const FRICTION = 0.7
 
 
 func enter() -> void:
-
 	gnome.angular_velocity = 0
 	gnome.gpu_particles.emitting = true
 	gnome.physics_material_override.friction = FRICTION
 	
-	gnome.gun.hide()
+	gnome.ball_form.set_deferred('disabled', false)
+	gnome.gnome_form.set_deferred('disabled', true)
 	
-
+	gnome.gun.hide()
 
 
 func exit() -> void:
@@ -30,14 +30,13 @@ func process(delta:float) -> void:
 
 
 func physics_process(delta:float) -> void:
-
 	gnome.linear_velocity.x = gnome.horizontal_input * SPEED
 	
 	if (Input.is_action_just_pressed("action")):
 		if gnome.on_ground:
 			state_machine.transition(GnomeJumpState.state_name)
 
-	if !gnome.ball_mode:
+	if Input.is_action_just_pressed("mode"):
 		state_machine.transition(GnomeTurretState.state_name)
 
 

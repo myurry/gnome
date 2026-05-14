@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://bhehrgvyvpbms" path="res://scripts/gnome.gd" id="1_qe4o5"]
 [ext_resource type="Texture2D" uid="uid://bo46wsjxpqok3" path="res://assets/tupoi_gnome.png" id="2_5vlar"]
 [ext_resource type="PackedScene" uid="uid://b1ew56ukrveqe" path="res://scenes/state machine.tscn" id="4_dt2vp"]
+[ext_resource type="AudioStream" uid="uid://bc0j55hxcly64" path="res://assets/sounds/jump3.wav" id="5_1yl2l"]
 [ext_resource type="PackedScene" uid="uid://bllynslnk458m" path="res://scenes/gun/gun.tscn" id="5_4jxkh"]
+[ext_resource type="AudioStream" uid="uid://b0nu555cutjcj" path="res://assets/sounds/shoot1.wav" id="6_wiii2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0f027"]
 rough = true
@@ -86,5 +88,7 @@ position = Vector2(5, 3)
 
 [node name="StateMachine" parent="." unique_id=883638947 instance=ExtResource("4_dt2vp")]
 is_log_enabled = true
+jump_sound = ExtResource("5_1yl2l")
+shoot_sound = ExtResource("6_wiii2")
 
 [connection signal="timeout" from="GroundTimer" to="." method="_on_ground_timer_timeout"]

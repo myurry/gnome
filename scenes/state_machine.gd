@@ -9,6 +9,11 @@ var _parent_node_name
 
 @export var is_log_enabled: bool = false
 
+@export_group("Sound Effects")
+
+@export var jump_sound: AudioStream
+@export var shoot_sound: AudioStream
+
 
 
 func initialize_self(init_states: Array[State]) -> void:

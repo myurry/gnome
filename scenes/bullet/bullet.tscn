@@ -18,7 +18,6 @@ rect = Rect2(-44, -42, 88, 86)
 
 [node name="freezone" parent="." unique_id=1237599220 instance=ExtResource("3_c6pnf")]
 collision_layer = 8
-collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="freezone" unique_id=1051666062]
 position = Vector2(0.5, 0)
