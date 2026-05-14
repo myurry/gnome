@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 func _on_ground_timer_timeout() -> void:
 	on_ground = false;
 	
-	
+### DEPRECATED ###
 #func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	#
 	#$GroundCast.global_position = Vector2(position.x, position.y + 6)
@@ -117,7 +117,7 @@ func _on_ground_timer_timeout() -> void:
 
 	
 	
-	
+### DEPRECATED ###
 #func shoot(aim_direction:String) -> void:
 	#match aim_direction:
 		#"up":

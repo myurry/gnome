@@ -20,6 +20,12 @@ func enter() -> void:
 	gnome.ball_form.set_deferred('disabled', true)
 	gnome.gnome_form.set_deferred('disabled', false)
 	
+	if gnome.linear_velocity.x >= 0:
+		switch_to_right_hand()
+	else:
+		switch_to_left_hand()
+		
+	
 
 func exit() -> void:
 	pass
@@ -30,8 +36,16 @@ func process(delta:float) -> void:
 
 
 func physics_process(delta:float) -> void:
-	gnome.linear_velocity.x = gnome.horizontal_input * SPEED
 	gnome.rotation = 0
+	
+	if gnome.horizontal_input > 0:
+		switch_to_right_hand()
+		gnome.linear_velocity.x = SPEED
+	
+	if gnome.horizontal_input < 0:
+		switch_to_left_hand()
+		gnome.linear_velocity.x = -SPEED
+	
 	
 	if Input.is_action_just_pressed("mode"):
 		state_machine.transition(GnomeRollState.state_name)
@@ -43,6 +57,7 @@ func physics_process(delta:float) -> void:
 			shoot("down")
 		else:
 			shoot("forward")
+		
 		
 func shoot(aim_direction:String) -> void:
 	match aim_direction:

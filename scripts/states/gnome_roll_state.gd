@@ -3,11 +3,9 @@ class_name GnomeRollState extends GnomeState
 
 static var state_name = "GnomeRollState"
 
-var on_ground = false
+
 const SPEED = 150
-
 const FRICTION = 0.7
-
 
 
 func enter() -> void:
@@ -30,7 +28,11 @@ func process(delta:float) -> void:
 
 
 func physics_process(delta:float) -> void:
-	gnome.linear_velocity.x = gnome.horizontal_input * SPEED
+	if gnome.horizontal_input > 0:
+		gnome.linear_velocity.x = SPEED
+	
+	if gnome.horizontal_input < 0:
+		gnome.linear_velocity.x = -SPEED
 	
 	if (Input.is_action_just_pressed("action")):
 		if gnome.on_ground:
