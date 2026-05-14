@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dr7ld3bhltj4n"]
+[gd_scene format=3 uid="uid://bcjael5kavk60"]
 
 [ext_resource type="Texture2D" uid="uid://bapr1qf3ycfxk" path="res://scenes/bullet/bullet.png" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://tsxl67iwec7k" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
@@ -16,7 +16,8 @@ texture = ExtResource("1_7c8un")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1929129260]
 rect = Rect2(-44, -42, 88, 86)
 
-[node name="Freezone" parent="." unique_id=2132154041 instance=ExtResource("3_c6pnf")]
+[node name="freezone" parent="." unique_id=1237599220 instance=ExtResource("3_c6pnf")]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Freezone" unique_id=432092746]
 position = Vector2(-1, 0)
