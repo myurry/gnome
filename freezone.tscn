@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c5hor7h30m851"]
+
+[ext_resource type="Script" uid="uid://dyq5j3f5br0n1" path="res://scenes/freezone.gd" id="1_bhlpl"]
+
+[node name="Freezone" type="Area2D" unique_id=2132154041]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_bhlpl")
