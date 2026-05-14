@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="2_rgld7"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_j6lu3"]
 [ext_resource type="PackedScene" uid="uid://bcx0cqsxtcgb5" path="res://scenes/huinia.tscn" id="5_tpt06"]
-[ext_resource type="PackedScene" uid="uid://dmffwn2ssmjih" path="res://scenes/kotik.tscn" id="6_16ffl"]
+[ext_resource type="PackedScene" uid="uid://628ixrw6vjxq" path="res://scenes/kotik.tscn" id="6_16ffl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8pr3"]
 shader = ExtResource("1_a8pr3")
@@ -46,4 +46,3 @@ autoplay = true
 position = Vector2(89, 40)
 
 [node name="Kotik" parent="." unique_id=872336334 instance=ExtResource("6_16ffl")]
-position = Vector2(-3, -24)

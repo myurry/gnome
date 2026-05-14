@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dmffwn2ssmjih"]
+[gd_scene format=3 uid="uid://628ixrw6vjxq"]
 
 [ext_resource type="Script" uid="uid://bwv7fp4x0vc6q" path="res://scenes/cat.gd" id="1_3vtck"]
 [ext_resource type="Texture2D" uid="uid://53xbnx0d5ih2" path="res://assets/propellercat.png" id="2_0hmtp"]
