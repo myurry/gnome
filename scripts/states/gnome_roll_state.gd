@@ -9,7 +9,6 @@ const FRICTION = 0.7
 
 
 func enter() -> void:
-	gnome.angular_velocity = 0
 	gnome.gpu_particles.emitting = true
 	gnome.physics_material_override.friction = FRICTION
 	
