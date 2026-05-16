@@ -1,30 +1,16 @@
-class_name GnomeTurretState extends GnomeState
+class_name GnomeSlideState extends GnomeState
 
 
-static var state_name = "GnomeTurretState"
-const SPEED = 75
+static var state_name = "GnomeSlideState"
+const SLIDE_SPEED = 75
 const FRICTION = 1
 
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
 var gun: Node2D
 
-var is_log_enabled: bool = true
-
-
 func enter() -> void:
-	gnome.physics_material_override.friction = FRICTION
-	gnome.gravity_scale = 1.5
-	gnome.gpu_particles.emitting = false
 	gun = gnome.gun
-	gun.show()
-	gnome.ball_form.set_deferred('disabled', true)
-	gnome.gnome_form.set_deferred('disabled', false)
-	
-	if gnome.linear_velocity.x > 2:
-		switch_to_right_hand()
-	elif gnome.linear_velocity.x < -2:
-		switch_to_left_hand()
-		
+	pass
 	
 
 func exit() -> void:
@@ -39,12 +25,16 @@ func physics_process(delta:float) -> void:
 	gnome.rotation = 0
 	
 	if gnome.horizontal_input > 0:
-		switch_to_right_hand()
-		gnome.linear_velocity.x = SPEED
+		switch_to_left_hand()
+		gnome.linear_velocity.y = SLIDE_SPEED
+		if gnome.on_left_wall:
+			state_machine.transition(GnomeTurretState.state_name)
 	
 	if gnome.horizontal_input < 0:
-		switch_to_left_hand()
-		gnome.linear_velocity.x = -SPEED
+		switch_to_right_hand()
+		gnome.linear_velocity.y = SLIDE_SPEED
+		if gnome.on_right_wall:
+			state_machine.transition(GnomeTurretState.state_name)
 	
 	
 	if Input.is_action_just_pressed("mode"):
@@ -57,10 +47,11 @@ func physics_process(delta:float) -> void:
 			shoot("down")
 		else:
 			shoot("forward")
-			
-	if gnome.on_wall:
-		state_machine.transition(GnomeSlideState.state_name)
 		
+	if not gnome.on_wall:
+		state_machine.transition(GnomeTurretState.state_name)
+		
+	
 		
 func shoot(aim_direction:String) -> void:
 	match aim_direction:

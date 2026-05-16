@@ -37,7 +37,10 @@ func physics_process(delta:float) -> void:
 			state_machine.transition(GnomeJumpState.state_name)
 
 	if Input.is_action_just_pressed("mode"):
-		state_machine.transition(GnomeTurretState.state_name)
+		if gnome.on_wall:
+			state_machine.transition(GnomeSlideState.state_name)
+		else:
+			state_machine.transition(GnomeTurretState.state_name)
 
 
 func get_state_name():

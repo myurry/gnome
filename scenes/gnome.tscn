@@ -81,6 +81,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1879228682]
+volume_db = -10.0
 
 [node name="Gun" parent="." unique_id=571785293 instance=ExtResource("5_4jxkh")]
 position = Vector2(5, 3)
@@ -89,5 +90,11 @@ position = Vector2(5, 3)
 is_log_enabled = true
 jump_sound = ExtResource("5_1yl2l")
 shoot_sound = ExtResource("6_wiii2")
+
+[node name="WallCastLeft" type="RayCast2D" parent="." unique_id=853779373]
+target_position = Vector2(-6, 0)
+
+[node name="WallCastRight" type="RayCast2D" parent="." unique_id=294239121]
+target_position = Vector2(6, 0)
 
 [connection signal="timeout" from="GroundTimer" to="." method="_on_ground_timer_timeout"]

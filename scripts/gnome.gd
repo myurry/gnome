@@ -3,6 +3,9 @@ extends RigidBody2D
 
 var horizontal_input: float = 0.0
 var on_ground = false
+var on_wall = false
+var on_left_wall = false
+var on_right_wall = false
 
 ### DEPRECATED ###
 #const BALL_SPEED = 150
@@ -22,6 +25,10 @@ var on_ground = false
 @onready var ball_form: CollisionShape2D = $ball_form
 @onready var gnome_form: CollisionShape2D = $gnome_form
 
+@onready var wall_cast_left: RayCast2D = $WallCastLeft
+@onready var wall_cast_right: RayCast2D = $WallCastRight
+
+
 @onready var audio = $AudioStreamPlayer
 
 @onready var gun: Node2D = $Gun
@@ -32,7 +39,7 @@ var on_ground = false
 func _ready() -> void:
 	self.gravity_scale = 1.5
 
-	var states: Array[State] = [GnomeTurretState.new(self), GnomeRollState.new(self), GnomeJumpState.new(self)]
+	var states: Array[State] = [GnomeTurretState.new(self), GnomeRollState.new(self), GnomeJumpState.new(self), GnomeSlideState.new(self)]
 
 	state_machine.initialize_self(states)
 
@@ -50,6 +57,10 @@ func _physics_process(delta: float) -> void:
 		$GroundTimer.start()
 	elif ($GroundCast.is_colliding()):
 		on_ground = true
+		
+	on_right_wall = wall_cast_right.is_colliding()
+	on_left_wall = wall_cast_left.is_colliding()
+	on_wall = on_left_wall or on_right_wall
 	
 	
 func _on_ground_timer_timeout() -> void:
