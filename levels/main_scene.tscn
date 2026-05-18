@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dm2oaktjfeca3"]
+[gd_scene format=4 uid="uid://bfy8p8ciupbdy"]
 
 [ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://scenes/gnome.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://fvrtdn5fdoe3" path="res://assets/tilesets/tileset.tscn" id="1_nfk4m"]

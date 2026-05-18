@@ -7,7 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6pnf"]
 size = Vector2(6, 4)
 
-[node name="Bullet" type="Node2D" unique_id=1655628109]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vdx3"]
+size = Vector2(6, 4)
+
+[node name="Bullet" type="Area2D" unique_id=1696168831]
+collision_layer = 0
 script = ExtResource("1_83itf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1921560920]
@@ -22,4 +26,9 @@ rect = Rect2(-44, -42, 88, 86)
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_c6pnf")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=95692680]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_0vdx3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

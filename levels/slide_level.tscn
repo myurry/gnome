@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dpkpwo21jir6a" path="res://scenes/gnome.tscn" id="2_gufyq"]
 [ext_resource type="PackedScene" uid="uid://bcx0cqsxtcgb5" path="res://scenes/huinia.tscn" id="3_0k542"]
 [ext_resource type="AudioStream" uid="uid://bcxfxyobvq66b" path="res://assets/music/music.mp3" id="4_gj4nj"]
+[ext_resource type="PackedScene" uid="uid://c88ehy260kg5r" path="res://scenes/killzone.tscn" id="5_dmy1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvcbg"]
+size = Vector2(395, 18.5)
 
 [node name="Slide Level" type="Node2D" unique_id=901896108]
 
@@ -29,3 +33,10 @@ autoplay = true
 
 [node name="Huinia2" parent="." unique_id=953815440 instance=ExtResource("3_0k542")]
 position = Vector2(483, 424)
+
+[node name="Killzone" parent="." unique_id=582040214 instance=ExtResource("5_dmy1x")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1670690624]
+position = Vector2(344, 352.75)
+shape = SubResource("RectangleShape2D_jvcbg")
